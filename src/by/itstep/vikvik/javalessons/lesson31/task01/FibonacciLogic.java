@@ -4,6 +4,18 @@ public class FibonacciLogic {
     // 1 2 3 4 5 6 7  8  9 10 11 12
     // 0 1 1 2 3 5 8 13 21 34 55 89 ...
 
+    // recursion approach
+    public static int getFibonacci(int index) {
+        // base-case
+        if (index <= 2) {
+            return index - 1;
+        }
+
+        // recursion-case
+        return getFibonacci(index - 1) + getFibonacci(index - 2);
+    }
+
+    // loop approach
     public static int getFibonacciNumber(int index) {
 
         if (index <= 0) {
