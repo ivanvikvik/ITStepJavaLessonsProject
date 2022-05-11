@@ -26,7 +26,6 @@ public class NumberLogic {
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.println(equals(1234567, 28));
-        System.out.println(equals(10, 7));
+
     }
 }
