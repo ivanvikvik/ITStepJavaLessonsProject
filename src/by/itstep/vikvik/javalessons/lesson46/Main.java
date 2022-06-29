@@ -1,8 +1,7 @@
 package by.itstep.vikvik.javalessons.lesson46;
 
 import com.sun.org.apache.xpath.internal.functions.WrongNumberArgsException;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
 
 import java.io.*;
 import java.lang.invoke.WrongMethodTypeException;
@@ -31,42 +30,37 @@ public class Main {
         long factorial = 1;
         LOG.debug("Algorithm starts with factorial = " + factorial);
 
+        LOG.trace("Start loop");
         for (int i = 2; i <= number; i++) {
             factorial *= i;
+            LOG.trace(String.format("i = %d, factorial = %d", i, factorial));
         }
 
+        LOG.trace("End loop");
         LOG.info("method ends with result = " + factorial);
 
         return factorial;
     }
 
     public static void main(String[] args) {
-        BasicConfigurator.configure();
-        LOG.fatal("This is fatal message");
-        LOG.error("This is error message");
-        LOG.warn("This is warn message");
-        LOG.info("This is info message");
-        LOG.debug("This is debug message");
-        LOG.trace("This is trace message");
+        Scanner scanner = new Scanner(System.in);
 
-//        Scanner scanner = new Scanner(System.in);
-//
-//        while (true) {
-//            System.out.print("Input your number: ");
-//            int number = scanner.nextInt();
-//
-//            if (number == -1) {
-//                break;
-//            }
-//
-//            try {
-//                long result = factorial(number);
-//                String s = String.format("\n%d! = %d", number, result);
-//                System.out.printf(s);
-//                LOG.info(s);
-//            } catch (WrongNumberArgsException exception) {
-//                LOG.warn("Exception", exception);
-//            }
-//        }
+        while (true) {
+            System.out.print("Input your number: ");
+            int number = scanner.nextInt();
+
+            if (number == -1) {
+                break;
+            }
+
+            try {
+                long result = factorial(number);
+                String s = String.format("\n%d! = %d", number, result);
+                System.out.printf(s);
+                LOG.info(s);
+            } catch (WrongNumberArgsException exception) {
+                LOG.warn("Exception", exception);
+            }
+        }
     }
 }
