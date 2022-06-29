@@ -1,6 +1,7 @@
 package by.itstep.vikvik.javalessons.lesson46;
 
 import com.sun.org.apache.xpath.internal.functions.WrongNumberArgsException;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -17,55 +18,55 @@ public class Main {
 
     private static int count;
 
-    static {
-        String fileName = "D:/Test/log.txt";
-        try {
-            System.setErr(new PrintStream(fileName));
-        }catch(FileNotFoundException exception){
-            //...
-        }
-    }
-
     public static long factorial(int number) throws WrongNumberArgsException {
         count++;
-        System.err.println("count = " + count);
-        System.err.println("method starts with arg = " + number);
+        LOG.debug("count = " + count);
+        LOG.debug("method starts with arg = " + number);
 
         if (number < 0) {
-            System.err.println("Exception. Wrong number!!! Number should be positive.");
+            LOG.debug("Exception. Wrong number!!! Number should be positive.");
             throw new WrongNumberArgsException("Wrong number!!! Number should be positive.");
         }
 
         long factorial = 1;
-        System.err.println("Algorithm starts with factorial = " + factorial);
+        LOG.debug("Algorithm starts with factorial = " + factorial);
 
         for (int i = 2; i <= number; i++) {
             factorial *= i;
         }
 
-        System.err.println("method ends with result = " + factorial);
+        LOG.info("method ends with result = " + factorial);
 
         return factorial;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        BasicConfigurator.configure();
+        LOG.fatal("This is fatal message");
+        LOG.error("This is error message");
+        LOG.warn("This is warn message");
+        LOG.info("This is info message");
+        LOG.debug("This is debug message");
+        LOG.trace("This is trace message");
 
-        while (true) {
-            System.out.print("Input your number: ");
-            int number = scanner.nextInt();
-
-            if (number == -1) {
-                break;
-            }
-
-            try {
-                long result = factorial(number);
-                System.out.printf("\n%d! = %d", number, result);
-            } catch (WrongNumberArgsException exception) {
-                System.err.println(exception);
-                System.err.println(exception.getMessage());
-            }
-        }
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while (true) {
+//            System.out.print("Input your number: ");
+//            int number = scanner.nextInt();
+//
+//            if (number == -1) {
+//                break;
+//            }
+//
+//            try {
+//                long result = factorial(number);
+//                String s = String.format("\n%d! = %d", number, result);
+//                System.out.printf(s);
+//                LOG.info(s);
+//            } catch (WrongNumberArgsException exception) {
+//                LOG.warn("Exception", exception);
+//            }
+//        }
     }
 }
