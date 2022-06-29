@@ -5,7 +5,7 @@ import java.io.*;
 public class CharWorker {
     public static void write(String fileName) {
 
-        try (Writer stream = new FileWriter(fileName)) {
+        try (Writer stream = new BufferedWriter(new FileWriter(fileName))) {
             for (int i = 0; i < 1000; i++) {
                 stream.write(i);
             }
@@ -20,7 +20,7 @@ public class CharWorker {
     public static String read(String fileName) {
         StringBuilder builder = new StringBuilder();
 
-        try(Reader stream = new FileReader(fileName)) {
+        try(Reader stream = new BufferedReader(new FileReader(fileName))) {
             if (stream.ready()) {
                 int temp;
                 while ((temp = stream.read()) != -1) {

@@ -6,7 +6,7 @@ public class Main {
         String fileName2 = "D:\\Test\\test1.txt";
 //        BinaryWorker.write(fileName1);
 //        System.out.println(BinaryWorker.read(fileName1));
-//       CharWorker.write(fileName2);
+        CharWorker.write(fileName2);
         System.out.println(CharWorker.read(fileName2));
     }
 }
